@@ -1,0 +1,14 @@
+.popup__item {
+  max-width: 358px;
+  width: 100%;
+  margin: 0 auto;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  padding: 0px 0px 9px;
+}
+
+::placeholder {
+  color: rgba(0, 0, 0, .5);
+  font-family: 'Inter', 'Arial', sans-serif; 
+}

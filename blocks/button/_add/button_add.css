@@ -1,0 +1,21 @@
+.button_add {
+  background-image: url('../../../images/button_add.svg');
+  background-repeat: no-repeat;
+  background-color: transparent;
+  width: 150px;
+  height: 50px;
+  align-self: center;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.button_add:hover {
+  opacity: .6;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 904px) {
+  .button_add {
+    background-image: url('../../../images/button_add_2.svg');
+    width: 282px;
+  }
+}

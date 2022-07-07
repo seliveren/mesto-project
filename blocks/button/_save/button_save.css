@@ -1,0 +1,30 @@
+.button_save {
+  height: 50px;
+  width: 358px;
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 1);
+  color: rgba(255, 255, 255, 1);
+  font-family: 'Inter', 'Arial', sans-serif; 
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin: 0px 36px 37px;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.button_save:hover {
+  cursor: pointer;
+  opacity: .8;
+}
+
+@media screen and (max-width: 500px) {
+  .button_save {
+    margin: 0px 22px 25px;
+    height: 46px;
+    width: 238px;
+    font-size: 14px;
+    line-height: 17px;
+}
+}

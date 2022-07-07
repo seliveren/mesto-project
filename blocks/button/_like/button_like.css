@@ -1,0 +1,14 @@
+.button_like {
+  background-image: url('../../../images/button_like.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 22px;
+  height: 19px;
+  background-color: transparent;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.button_like:hover {
+  opacity: .5;
+  cursor: pointer;
+}

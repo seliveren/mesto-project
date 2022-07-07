@@ -1,0 +1,9 @@
+.places__place {
+  height: 362px;
+  max-width: 282px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(min-content, max-content));
+  grid-template-rows: repeat(2, minmax(min-content, max-content));
+  border-radius: 10px;
+}

@@ -1,0 +1,22 @@
+.profile__about-info {
+  color: rgba(255, 255, 255, 1);
+  font-family: 'Inter', 'Arial', sans-serif; 
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: left;
+  grid-row: 2;
+  grid-column: 1;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 904px) {
+  .profile__about-info {
+    font-family: 'Inter', 'Arial', sans-serif; 
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+  }
+}

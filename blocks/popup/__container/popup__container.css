@@ -1,0 +1,16 @@
+.popup__container {
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
+  height: 330px;
+  width: 430px;
+  border-radius: 10px;
+  grid-row: 2;
+  grid-column: 1;
+}
+
+@media screen and (max-width: 500px) {
+  .popup__container {
+    height: 322px;
+    width: 282px;
+  }
+}
