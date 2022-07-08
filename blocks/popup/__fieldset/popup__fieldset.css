@@ -1,29 +1,33 @@
-.popup__fieldset {
-  border: none;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  font-family: 'Inter', 'Arial', sans-serif; 
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 17px;
-  letter-spacing: 0em;
-  text-align: left;
-  padding: 0px 35px 31px;
-}
+.popup__fieldset { 
+  border: none; 
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
+  overflow: hidden; 
+  font-family: 'Inter', 'Arial', sans-serif;  
+  font-size: 14px; 
+  font-weight: 400; 
+  line-height: 17px; 
+  letter-spacing: 0em; 
+  text-align: left; 
+  padding: 0px 35px 31px; 
+} 
 
-.popup__fieldset:nth-of-type(2) {
-  padding: 0px 36px 47px;
-}
+.popup__fieldset:last-of-type { 
+  padding: 0px 36px 47px; 
+} 
 
-@media screen and (max-width: 500px) {
-  .popup__fieldset {
-    padding: 0px 20px 30px;
-}
+@media screen and (max-width: 500px) { 
+  .popup__fieldset { 
+    padding: 0px 20px 30px; 
+} 
 
-  .popup__fieldset:nth-of-type(2) {
-    padding: 0px 20px 45px;
+  .popup__fieldset:last-of-type { 
+    padding: 0px 20px 45px; 
 }
-}
+} 
 
+ 
 
+ 
+
+ 
