@@ -1,5 +1,5 @@
-.button_edit {
-  background-image: url('../../../images/button_edit.svg');
+.button_category_edit {
+  background-image: url('../../../../images/button_edit.svg');
   background-size: contain;
   background-color: transparent;
   width: 24px;
@@ -9,13 +9,13 @@
   transition: opacity 0.1s ease-in-out;
 }
 
-.button_edit:hover {
+.button_category_edit:hover {
   opacity: .6;
   cursor: pointer;
 }
 
 @media screen and (max-width: 320px) {
-  .button_edit {
+  .button_category_edit {
     width: 18px;
     height: 18px;
   }

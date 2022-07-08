@@ -1,5 +1,4 @@
-.button_save {
-  height: 50px;
+.button_category_save {
   width: 358px;
   border-radius: 2px;
   background-color: rgba(0, 0, 0, 1);
@@ -8,23 +7,24 @@
   font-size: 18px;
   font-weight: 400;
   line-height: 22px;
+  padding: 14px 0px;
   letter-spacing: 0em;
   text-align: center;
   margin: 0px 36px 37px;
   transition: opacity 0.1s ease-in-out;
 }
 
-.button_save:hover {
+.button_category_save:hover {
   cursor: pointer;
   opacity: .8;
 }
 
 @media screen and (max-width: 500px) {
-  .button_save {
+  .button_category_save {
     margin: 0px 22px 25px;
-    height: 46px;
     width: 238px;
     font-size: 14px;
     line-height: 17px;
+    padding: 14.5px 0px;
 }
 }

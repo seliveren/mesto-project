@@ -6,8 +6,10 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
-  height: 100%;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
+  height: 100%; 
+  width: 100%; 
+  position: relative; 
+  overflow: hidden; 
+  min-width: 320px;
+  max-width: 1280px;
 }
