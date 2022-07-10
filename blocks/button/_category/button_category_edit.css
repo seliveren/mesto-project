@@ -1,5 +1,5 @@
 .button_category_edit {
-  background-image: url('../../../../images/button_edit.svg');
+  background-image: url('../../../images/button_edit.svg');
   width: 24px;
   height: 24px;
   grid-row: 1;
