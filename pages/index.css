@@ -40,9 +40,12 @@
 
 /*button*/
 @import url(../blocks/button/button.css);
-@import url(../blocks/button/_category/_add/button_category_add.css);
-@import url(../blocks/button/_category/_close/button_category_close.css);
-@import url(../blocks/button/_category/_edit/button_category_edit.css);
-@import url(../blocks/button/_category/_like/_like-active/button_category_like-active.css);
-@import url(../blocks/button/_category/_like/button_category_like.css);
-@import url(../blocks/button/_category/_save/button_category_save.css);
+@import url(../blocks/button/_category/button_category_add.css);
+@import url(../blocks/button/_category/button_category_close.css);
+@import url(../blocks/button/_category/button_category_edit.css);
+@import url(../blocks/button/_category/button_category_like-active.css);
+@import url(../blocks/button/_category/button_category_like.css);
+@import url(../blocks/button/_category/button_category_save.css);
+
+/*root*/
+@import url(../blocks/root/root.css);

@@ -1,0 +1,10 @@
+.button_category_like {
+  background-image: url('../../../images/button_like.svg');
+  width: 22px;
+  height: 19px;
+  background-color: transparent;
+}
+
+.button_category_like:hover {
+  opacity: .5;
+}

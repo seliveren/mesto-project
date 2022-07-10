@@ -8,10 +8,6 @@
   align-self: center;
 }
 
-.button_category_add:hover {
-  opacity: .6;
-}
-
 @media screen and (max-width: 904px) {
   .button_category_add {
     width: 282px;
