@@ -26,109 +26,26 @@
 
       <main class="content">
         <section class="profile">
-          <img
-            class="profile__avatar"
-            src="./images/profile_avatar.png"
-            alt="Аватар профиля"
-          />
-          <div class="profile__info">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <p class="profile__about-info">Исследователь океана</p>
-            <button class="button button_category_edit" type="button"></button>
+          <div class="profile__main-info">
+            <img
+              class="profile__avatar"
+              src="./images/profile_avatar.png"
+              alt="Аватар профиля"
+            />
+            <div class="profile__info">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <p class="profile__about-info">Исследователь океана</p>
+              <button
+                class="button button_category_edit"
+                type="button"
+              ></button>
+            </div>
           </div>
           <button class="button button_category_add" type="button"></button>
         </section>
 
         <section class="photo-gallery">
-          <ul class="places">
-            <li class="places__place">
-              <img
-                class="places__image"
-                src="./images/zolotaya-obitel.jpeg"
-                alt="Золотая обитель Будды Шакьямуни"
-              />
-              <div class="places__name-tag">
-                <h2 class="places__name">Золотая обитель Будды Шакьямуни</h2>
-                <button
-                  class="button button_category_like"
-                  type="button"
-                ></button>
-              </div>
-            </li>
-            <li class="places__place">
-              <img
-                class="places__image"
-                src="./images/peter-and-paul-cathedral.jpeg"
-                alt="Петропавловский Собор"
-              />
-              <div class="places__name-tag">
-                <h2 class="places__name">Петропавловский Собор</h2>
-                <button
-                  class="button button_category_like"
-                  type="button"
-                ></button>
-              </div>
-            </li>
-            <li class="places__place">
-              <img
-                class="places__image"
-                src="./images/muzei-rossiya-moya-istoriya.jpeg"
-                alt="
-              Мультимедийный Исторический Парк 'Россия - моя история'"
-              />
-              <div class="places__name-tag">
-                <h2 class="places__name">
-                  Мультимедийный Исторический Парк "Россия - моя история"
-                </h2>
-                <button
-                  class="button button_category_like"
-                  type="button"
-                ></button>
-              </div>
-            </li>
-            <li class="places__place">
-              <img
-                class="places__image"
-                src="./images/roza-khutor.jpeg"
-                alt="Курорт 'Роза Хутор'"
-              />
-              <div class="places__name-tag">
-                <h2 class="places__name">Курорт "Роза Хутор"</h2>
-                <button
-                  class="button button_category_like"
-                  type="button"
-                ></button>
-              </div>
-            </li>
-            <li class="places__place">
-              <img
-                class="places__image"
-                src="./images/kronshtadt.jpeg"
-                alt="Кронштадт"
-              />
-              <div class="places__name-tag">
-                <h2 class="places__name">Кронштадт</h2>
-                <button
-                  class="button button_category_like"
-                  type="button"
-                ></button>
-              </div>
-            </li>
-            <li class="places__place">
-              <img
-                class="places__image"
-                src="./images/ruskeala.jpeg"
-                alt="Горный парк 'Рускеала'"
-              />
-              <div class="places__name-tag">
-                <h2 class="places__name">Горный парк "Рускеала"</h2>
-                <button
-                  class="button button_category_like"
-                  type="button"
-                ></button>
-              </div>
-            </li>
-          </ul>
+          <ul class="places"></ul>
         </section>
 
         <div class="popup">
@@ -140,20 +57,20 @@
               <fieldset class="popup__fieldset">
                 <input
                   type="text"
-                  class="popup__item"
+                  class="popup__item popup__item_type_name"
                   placeholder="Имя Фамилия"
                   name="name"
-                  value="Жак-Ив Кусто"
+                  value=""
                 />
               </fieldset>
 
               <fieldset class="popup__fieldset">
                 <input
                   type="text"
-                  class="popup__item"
+                  class="popup__item popup__item_type_about-info"
                   placeholder="О Вас"
                   name="about-info"
-                  value="Исследователь океана"
+                  value=""
                 />
               </fieldset>
 
@@ -163,11 +80,66 @@
             </form>
           </div>
         </div>
+
+        <div class="popup">
+          <div class="popup__container">
+            <button class="button button_category_close" type="button"></button>
+
+            <h3 class="popup__text">Новое место</h3>
+            <form class="popup__form" name="place-add">
+              <fieldset class="popup__fieldset">
+                <input
+                  type="text"
+                  class="popup__item popup__item_type_place-name"
+                  placeholder="Название"
+                  name="place-name"
+                  value=""
+                />
+              </fieldset>
+
+              <fieldset class="popup__fieldset">
+                <input
+                  type="text"
+                  class="popup__item popup__item_type_place-link"
+                  placeholder="Ссылка на картинку"
+                  name="place-link"
+                  value=""
+                />
+              </fieldset>
+
+              <button class="button button_category_save" type="submit">
+                Сохранить
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="popup">
+          <div class="popup__photo-container">
+            <button class="button button_category_close" type="button"></button>
+            <figure class="popup__figure">
+              <img class="popup__photo" />
+              <figcaption class="popup__caption"></figcaption>
+            </figure>
+          </div>
+        </div>
       </main>
 
       <footer class="footer">
         <p class="footer__copyright">© 2022 Mesto Russia</p>
       </footer>
     </div>
+    <template id="card">
+      <li class="places__place">
+        <button class="button button_category_delete"></button>
+        <img class="places__image" src="" alt="" />
+        <div class="places__name-tag">
+          <h2 class="places__name"></h2>
+          <button class="button button_category_like" type="button"></button>
+        </div>
+      </li>
+    </template>
+
+    <script src="script.js"></script>
   </body>
 </html>

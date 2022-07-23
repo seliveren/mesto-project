@@ -2,7 +2,7 @@
   background-image: url('../../../images/button_close.svg');
   width: 32px;
   height: 32px;
-  margin: -38px 0px 8px 8px;
+  margin: -38px -38px 8px 8px;
   grid-row: 1;
   grid-column: 2;
 }

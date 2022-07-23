@@ -12,8 +12,10 @@
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
   padding: 0px 0px 9px;
+  box-shadow: 0 0 0 1000px rgba(255, 255, 255, 1) inset;
 }
 
 .popup__item::placeholder {
   color: rgba(0, 0, 0, .5);
 }
+

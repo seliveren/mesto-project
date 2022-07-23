@@ -4,10 +4,9 @@
   grid-template-columns: repeat(2, minmax(min-content, max-content));
   column-gap: 18px;
   row-gap: 8px;
-  align-items: baseline;
+  align-items: center;
   padding: 21px 244px 0px 30px;
 }
-
 
 @media screen and (max-width: 904px) {
   .profile__info {

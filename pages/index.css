@@ -18,8 +18,9 @@
 /*profile*/
 @import url(../blocks/profile/__about-info/profile__about-info.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
-@import url(../blocks//profile/__info/profile__info.css);
-@import url(../blocks//profile/__name/profile__name.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__main-info/profile__main-info.css);
 @import url(../blocks/profile/profile.css);
 
 /*places*/
@@ -37,15 +38,20 @@
 @import url(../blocks/popup/__item/popup__item.css);
 @import url(../blocks/popup/__fieldset/popup__fieldset.css);
 @import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__photo-container/popup__photo-container.css);
+@import url(../blocks/popup/__photo/popup__photo.css);
+@import url(../blocks/popup/__caption/popup__caption.css);
+@import url(../blocks/popup/__figure/popup__figure.css);
 
 /*button*/
 @import url(../blocks/button/button.css);
 @import url(../blocks/button/_category/button_category_add.css);
 @import url(../blocks/button/_category/button_category_close.css);
 @import url(../blocks/button/_category/button_category_edit.css);
-@import url(../blocks/button/_category/button_category_like-active.css);
 @import url(../blocks/button/_category/button_category_like.css);
+@import url(../blocks/button/_category/button_category_like-active.css);
 @import url(../blocks/button/_category/button_category_save.css);
+@import url(../blocks/button/_category/button_category_delete.css);
 
 /*root*/
 @import url(../blocks/root/root.css);
