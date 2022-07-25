@@ -48,12 +48,18 @@
           <ul class="places"></ul>
         </section>
 
-        <div class="popup">
+        <div class="popup popup_type_for-profile">
           <div class="popup__container">
-            <button class="button button_category_close" type="button"></button>
+            <button
+              class="button button_category_close button_type_close-for-profile"
+              type="button"
+            ></button>
 
             <h3 class="popup__text">Редактировать профиль</h3>
-            <form class="popup__form" name="profile-edit">
+            <form
+              class="popup__form popup__form_type_for-profile"
+              name="profile-edit"
+            >
               <fieldset class="popup__fieldset">
                 <input
                   type="text"
@@ -81,12 +87,18 @@
           </div>
         </div>
 
-        <div class="popup">
+        <div class="popup popup_type_for-place">
           <div class="popup__container">
-            <button class="button button_category_close" type="button"></button>
+            <button
+              class="button button_category_close button_type_close-for-place"
+              type="button"
+            ></button>
 
             <h3 class="popup__text">Новое место</h3>
-            <form class="popup__form" name="place-add">
+            <form
+              class="popup__form popup__form_type_for-place"
+              name="place-add"
+            >
               <fieldset class="popup__fieldset">
                 <input
                   type="text"
@@ -114,9 +126,12 @@
           </div>
         </div>
 
-        <div class="popup">
+        <div class="popup popup_type_for-photo">
           <div class="popup__photo-container">
-            <button class="button button_category_close" type="button"></button>
+            <button
+              class="button button_category_close button_type_close-for-photo"
+              type="button"
+            ></button>
             <figure class="popup__figure">
               <img class="popup__photo" />
               <figcaption class="popup__caption"></figcaption>
@@ -139,7 +154,7 @@
         </div>
       </li>
     </template>
-
-    <script src="script.js"></script>
+    <script src="./scripts/cards.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>

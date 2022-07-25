@@ -3,6 +3,7 @@
   width: 22px;
   height: 19px;
   background-color: transparent;
+  align-self: center;
 }
 
 .button_category_like:hover {
