@@ -1,5 +1,5 @@
 //массив с начальными карточками
-const initialCards = [
+export const initialCards = [
   {
     name: 'Дворцовая площадь',
     link: 'https://images.unsplash.com/photo-1554844344-c34ea04258c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80',
