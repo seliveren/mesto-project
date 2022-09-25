@@ -1,0 +1,17 @@
+.popup__photo-container {
+  position: fixed; 
+  display: grid; 
+  justify-items: end;
+  grid-template-columns: repeat(2, minmax(min-content, max-content)); 
+  grid-template-rows: repeat(2, minmax(min-content, max-content)); 
+  left: 50%; 
+  top: 50%; 
+  transform: translate(-50%, -50%); 
+  margin: auto; 
+} 
+
+@media screen and (max-width: 500px) { 
+  .popup__photo-container { 
+    grid-template-columns: repeat(1, minmax(min-content, max-content));
+  }
+} 

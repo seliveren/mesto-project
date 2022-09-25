@@ -1,0 +1,33 @@
+.popup__fieldset { 
+  border: none; 
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
+  overflow: hidden; 
+  font-family: 'Inter', 'Arial', sans-serif;  
+  font-size: 14px; 
+  font-weight: 400; 
+  line-height: 17px; 
+  letter-spacing: 0;
+  text-align: left; 
+  padding: 0 35px 61px;
+} 
+
+.popup__fieldset:last-of-type { 
+  padding: 0 36px 72px;
+} 
+
+@media screen and (max-width: 500px) { 
+  .popup__fieldset { 
+    padding: 0 20px 60px;
+} 
+
+  .popup__fieldset:last-of-type { 
+    padding: 0 20px 69px;
+}
+} 
+
+ 
+
+ 
+
+ 
