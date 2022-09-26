@@ -12,7 +12,6 @@ import '../pages/index.css';
 buttonEdit.addEventListener('click', function() {
   openPopup(popupEdit);
   displayProfileInfo();
-
 });
 
 //сохранение информации в профиле 
