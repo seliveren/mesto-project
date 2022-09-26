@@ -1,4 +1,4 @@
-import {popupList} from "./utils.js";
+import {popupList} from "./constants.js";
 
 //функция открытия поп-ап'ов
 export function openPopup(popupElement) {
@@ -15,16 +15,8 @@ export function closePopup(popupElement) {
 //закрытие поп-апов кнопкой esc
 function closePopupWithEsc(evt) {
   if (evt.key === 'Escape') {
-    popupList.forEach(el =>
-      closePopup(el));
+    popupList.forEach(closePopup);
   }
 };
 
-//закрытие поп-апов по нажатию на оверлей
-export function closePopupOverlay(evt) {
-  if (evt.target.classList.contains('popup')) {
-    popupList.forEach(el =>
-      closePopup(el));
-  }
-};
 

@@ -5,7 +5,6 @@ export const initialCards = [
     link: 'https://images.unsplash.com/photo-1554844344-c34ea04258c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80',
     alt: 'Вид на здание Дворцовой площади',
     class: 'popup-image'
-
   },
   {
     name: 'Памятник Маршалу Жукову',

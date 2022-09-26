@@ -1,3 +1,5 @@
+import {buttonEdit, buttonAdd, avatarOverlay, nameInput, nameMain} from "./constants";
+
 //проверка валидности всех полей
 function checkIfInvalid(inputs) {
   return inputs.some((input) => {
@@ -6,27 +8,29 @@ function checkIfInvalid(inputs) {
 };
 
 //изменение состояния кнопки
-function changeButtonStyle(inputs, button) {
+function changeButtonStyle(inputs, button, settings) {
   if(checkIfInvalid(inputs)) {
-    button.classList.add('button_inactive');
+    button.classList.add(settings.inactiveButtonClass);
+    button.disabled = true;
   } else {
-    button.classList.remove('button_inactive');
+    button.classList.remove(settings.inactiveButtonClass);
+    button.disabled = false;
   }
 };
 
 //показывает ошибку невалидного поля
-function displayError(form, input, message) {
-  const error = form.querySelector(`.${input.id}-error`);
-  input.classList.add('popup__item_type_error');
-  error.textContent = message;
-  error.classList.add('popup__error_type_active');
+function displayError(form, input, message, settings) {
+    const error = form.querySelector(`.${input.id}-error`);
+    input.classList.add(settings.inputErrorClass);
+    error.textContent = message;
+    error.classList.add(settings.errorClass);
 };
 
 //скрывает ошибку невалидного поля
-function concealError(form, input) {
+function concealError(form, input, settings) {
   const error = form.querySelector(`.${input.id}-error`);
-  input.classList.remove('popup__item_type_error');
-  error.classList.remove('popup__error_active');
+  input.classList.remove(settings.inputErrorClass);
+  error.classList.remove(settings.errorClass);
   error.textContent = '';
 };
 
@@ -40,40 +44,50 @@ function checkWhetherToDisplayCustomError(form, input) {
 };
 
 //проверка валидности и навешивание или скрытие ошибки
-function checkWhetherToDisplayError(form, input) {
+function checkWhetherToDisplayError(form, input, settings) {
   if (!input.validity.valid) {
-    displayError(form, input, input.validationMessage);
+    displayError(form, input, input.validationMessage, settings);
   } else {
-    concealError(form, input);
+    concealError(form, input, settings);
   }
 };
 
 //проверка, показ/скрытие ошибки и изменение состояния кнопки в процессе "живой" валидации
-function addEventListeners(form) {
-  const inputs = Array.from(form.querySelectorAll('.popup__item'));
-  const button = form.querySelector('.button_category_save');
-  changeButtonStyle(inputs, button);
+function addEventListeners(form, settings) {
+  const inputs = Array.from(form.querySelectorAll(settings.inputSelector));
+  const button = form.querySelector(settings.submitButtonSelector);
+  buttonEdit.addEventListener('click', function () {
+    changeButtonStyle(inputs, button, settings);
+  });
+  buttonAdd.addEventListener('click', function () {
+    changeButtonStyle(inputs, button, settings);
+  });
+  avatarOverlay.addEventListener('click', function () {
+    changeButtonStyle(inputs, button, settings);
+  });
   inputs.forEach((input) => {
     input.addEventListener('input', function () {
       checkWhetherToDisplayCustomError(form, input);
-      checkWhetherToDisplayError(form, input);
-      changeButtonStyle(inputs, button);
+      checkWhetherToDisplayError(form, input, settings);
+      changeButtonStyle(inputs, button, settings);
     });
   });
 };
 
 //запуск валидации (полей) и изменения состояния (кнопки) элементов формы
-export function switchOnValidation() {
-  const forms = Array.from(document.querySelectorAll('.popup__form'));
+export function enableValidation(settings) {
+  const forms = Array.from(document.querySelectorAll(settings.formSelector));
   forms.forEach((form) => {
     form.addEventListener('submit', function (evt) {
       evt.preventDefault();
     });
     forms.forEach ((form) => {
-      addEventListeners(form);
+      addEventListeners(form, settings);
     });
   });
 };
 
+
+// if (nameInput.value === nameMain.textContent && (nameInput.value === ''))
 
 

@@ -1,5 +1,5 @@
 import {nameMain, userInfoMain, popupEdit, nameInput, jobInput, avatar, formAvatarEdit, avatarInput,
-  popupAvatar, avatarOverlay} from "./utils.js";
+  popupAvatar, avatarOverlay} from "./constants.js";
 import {closePopup} from "./modal.js"
 
 //функция сохранения информации в профиле
@@ -12,8 +12,13 @@ export function submitProfile(evt) {
 
 //отображение значений профиля в форме редактирования
 export function displayProfileInfo() {
-  nameInput.value = nameMain.textContent;
-  jobInput.value = userInfoMain.textContent;
+  if(nameInput.value === '') {
+    nameInput.value = nameMain.textContent;
+  };
+
+  if(jobInput.value === '') {
+    jobInput.value = userInfoMain.textContent;
+  };
 };
 
 //функция сохранения аватарки

@@ -1,12 +1,12 @@
 import {
   popupPhoto, popupPhotoImg, captionText, cardTemplate, places, placeName, placeLink, formAddCard,
   popupAdd
-} from "./utils.js";
+} from "./constants.js";
 import {openPopup, closePopup} from "./modal.js";
 import {initialCards} from "./cards.js";
 
 //функция для постановки лайков
-function addLike(evt) {
+function toggleLike(evt) {
   evt.target.classList.toggle('button_category_like-active');
 }
 
@@ -16,11 +16,11 @@ function deleteCard(evt) {
 }
 
 //функция для открытия карточки
-function openCard(evt) {
+function openCard(placeLinkValue, placeNameValue, placeAltValue) {
   openPopup(popupPhoto);
-  popupPhotoImg.src = evt.target.src;
-  captionText.textContent = evt.target.closest('.places__place').textContent;
-  popupPhotoImg.alt = evt.target.alt;
+  popupPhotoImg.src = placeLinkValue;
+  captionText.textContent = placeNameValue;
+  popupPhotoImg.alt = placeAltValue;
 }
 
 //добавление карточки (возвращение готовой карточки)
@@ -33,13 +33,13 @@ function addPlace(placeNameValue, placeLinkValue, placeAltValue) {
   cardPlaceImage.alt = placeAltValue;
 
   //ставить лайки на новой карточке
-  cardElement.querySelector('.button_category_like').addEventListener('click', addLike);
+  cardElement.querySelector('.button_category_like').addEventListener('click', toggleLike);
 
   //удалить новую карточку
   cardElement.querySelector('.button_category_delete').addEventListener('click', deleteCard);
 
   //открытие фотографии новой карточки
-  cardPlaceImage.addEventListener('click', openCard);
+  cardPlaceImage.addEventListener('click', () => openCard(placeLinkValue, placeNameValue, placeAltValue));
 
   return cardElement;
 }
@@ -52,12 +52,10 @@ function insertCard(element) {
 //функция сохранения добавления новой карточки
 export function submitAddPlace(evt) {
   evt.preventDefault();
-
   const cardNew = addPlace(placeName.value, placeLink.value, placeName.value);
   insertCard(cardNew);
-
   formAddCard.reset();
-
+  evt.submitter.disabled = true;
   closePopup(popupAdd);
 }
 
