@@ -1,5 +1,3 @@
-import {buttonEdit, buttonAdd, avatarOverlay, nameInput, nameMain} from "./constants";
-
 //проверка валидности всех полей
 function checkIfInvalid(inputs) {
   return inputs.some((input) => {
@@ -20,10 +18,10 @@ function changeButtonStyle(inputs, button, settings) {
 
 //показывает ошибку невалидного поля
 function displayError(form, input, message, settings) {
-    const error = form.querySelector(`.${input.id}-error`);
-    input.classList.add(settings.inputErrorClass);
-    error.textContent = message;
-    error.classList.add(settings.errorClass);
+  const error = form.querySelector(`.${input.id}-error`);
+  input.classList.add(settings.inputErrorClass);
+  error.textContent = message;
+  error.classList.add(settings.errorClass);
 };
 
 //скрывает ошибку невалидного поля
@@ -56,15 +54,15 @@ function checkWhetherToDisplayError(form, input, settings) {
 function addEventListeners(form, settings) {
   const inputs = Array.from(form.querySelectorAll(settings.inputSelector));
   const button = form.querySelector(settings.submitButtonSelector);
-  buttonEdit.addEventListener('click', function () {
-    changeButtonStyle(inputs, button, settings);
+
+  changeButtonStyle(inputs, button, settings);
+
+  form.addEventListener('reset', () => {
+    setTimeout(() => {
+      changeButtonStyle(inputs, button, settings);
+    }, 0);
   });
-  buttonAdd.addEventListener('click', function () {
-    changeButtonStyle(inputs, button, settings);
-  });
-  avatarOverlay.addEventListener('click', function () {
-    changeButtonStyle(inputs, button, settings);
-  });
+
   inputs.forEach((input) => {
     input.addEventListener('input', function () {
       checkWhetherToDisplayCustomError(form, input);
@@ -88,6 +86,6 @@ export function enableValidation(settings) {
 };
 
 
-// if (nameInput.value === nameMain.textContent && (nameInput.value === ''))
+
 
 

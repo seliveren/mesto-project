@@ -55,7 +55,6 @@ export function submitAddPlace(evt) {
   const cardNew = addPlace(placeName.value, placeLink.value, placeName.value);
   insertCard(cardNew);
   formAddCard.reset();
-  evt.submitter.disabled = true;
   closePopup(popupAdd);
 }
 

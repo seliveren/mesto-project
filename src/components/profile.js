@@ -1,5 +1,7 @@
-import {nameMain, userInfoMain, popupEdit, nameInput, jobInput, avatar, formAvatarEdit, avatarInput,
-  popupAvatar, avatarOverlay} from "./constants.js";
+import {
+  nameMain, userInfoMain, popupEdit, nameInput, jobInput, avatar, formAvatarEdit, avatarInput,
+  popupAvatar, avatarOverlay
+} from "./constants.js";
 import {closePopup} from "./modal.js"
 
 //функция сохранения информации в профиле
