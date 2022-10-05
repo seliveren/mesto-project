@@ -29,12 +29,12 @@
             <div class="profile__avatar-overlay"></div>
             <img
               class="profile__avatar"
-              src="<%=require('./images/profile_avatar.png')%>"
+              src=""
               alt="Аватар профиля"
             />
             <div class="profile__info">
-              <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <p class="profile__about-info">Исследователь океана</p>
+              <h1 class="profile__name"></h1>
+              <p class="profile__about-info"></p>
               <button
                 class="button button_category_edit"
                 type="button"
@@ -191,11 +191,13 @@
     </div>
     <template id="card">
       <li class="places__place">
-        <button class="button button_category_delete"></button>
         <img class="places__image" src="" alt="" />
         <div class="places__name-tag">
           <h2 class="places__name"></h2>
-          <button class="button button_category_like" type="button"></button>
+          <div class="places__likes">
+            <button class="button button_category_like" type="button"></button>
+            <span class="like-counter"></span>
+          </div>
         </div>
       </li>
     </template>
