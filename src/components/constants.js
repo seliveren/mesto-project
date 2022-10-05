@@ -8,6 +8,7 @@ export const popupAvatar = document.querySelector(".popup_type_for-avatar");
 //кнопки
 export const buttonEdit = document.querySelector(".button_category_edit");
 export const buttonAdd = document.querySelector(".button_category_add");
+export const buttonSave = document.querySelector(".button_category_save");
 export const saveButtons = document.querySelectorAll(".button_category_save");
 
 //форма редактирования профиля
@@ -16,6 +17,8 @@ export const nameInput = document.querySelector(".popup__item_type_name");
 export const jobInput = document.querySelector(".popup__item_type_about-info");
 export const nameMain = document.querySelector(".profile__name");
 export const userInfoMain = document.querySelector(".profile__about-info");
+export const popupItems = document.querySelectorAll(".popup__item");
+export const popupErrors = document.querySelectorAll(".popup__error");
 
 //для создания новой карточки
 export const places = document.querySelector(".places");

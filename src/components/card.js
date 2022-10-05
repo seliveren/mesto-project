@@ -21,10 +21,6 @@ function openCard(placeLinkValue, placeNameValue, placeAltValue) {
   popupPhotoImg.alt = placeAltValue;
 }
 
-
-
-
-
 //добавление карточки (возвращение готовой карточки)
 export function addPlace(
   placeNameValue,

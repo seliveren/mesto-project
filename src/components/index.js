@@ -10,10 +10,10 @@ import {
   avatarOverlay,
   formAvatarEdit,
   avatar,
-  popupList, nameMain, userInfoMain, nameInput, jobInput, avatarInput, placeName, placeLink
+  popupList, nameMain, userInfoMain, nameInput, jobInput, avatarInput, placeName, placeLink, popupItems, popupErrors, buttonSave
 } from "./constants.js";
 import { insertCard, addPlace } from "./card.js";
-import { renderLoading } from "./utils.js";
+import {removeError, renderLoading, changeStyle} from "./utils.js";
 import { enableValidation } from "./validate.js";
 import "../pages/index.css";
 import {
@@ -28,10 +28,15 @@ import {
 } from "./api.js";
 
 
+
+
+
 //открытие поп-ап с редактированием профиля
 buttonEdit.addEventListener("click", function () {
   openPopup(popupEdit);
   displayProfileInfo();
+  removeError();
+  changeStyle(nameInput, jobInput);
 });
 
 //сохранение информации в профиле
@@ -40,6 +45,10 @@ formProfileEdit.addEventListener("submit", submitProfile);
 //открытие поп-ап для добавления новой карточки
 buttonAdd.addEventListener("click", function () {
   openPopup(popupAdd);
+  placeLink.value = '';
+  placeName.value = '';
+  removeError();
+  changeStyle(placeName, placeLink);
 });
 
 //сохранение новой карточки
@@ -48,6 +57,9 @@ formAddCard.addEventListener("submit", submitAddPlace);
 //открытие поп-ап для изменения аватарки
 avatarOverlay.addEventListener("click", function () {
   openPopup(popupAvatar);
+  avatarInput.value = '';
+  removeError();
+  changeStyle(avatarInput);
 });
 
 //сохранение аватарки
@@ -74,8 +86,7 @@ popupList.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
     if (evt.target.classList.contains("popup_opened")) {
       closePopup(popup);
-    }
-    if (evt.target.classList.contains("button_category_close")) {
+    } if (evt.target.classList.contains("button_category_close")) {
       closePopup(popup);
     }
   });
@@ -201,7 +212,7 @@ getUserInfo()
     console.log(err);
   })
 
-//Id текущего пользователя
+//id текущего пользователя
 export let currentUserId;
 getUserInfo()
   .then(data => currentUserId = data._id)
@@ -249,7 +260,7 @@ function submitAddPlace(evt) {
 }
 
 //функция рендеринга карточек на странице
-function renderInitialCards(res, a) {
+function renderInitialCards(res) {
   res.forEach((el) => {
     const card = addPlace(
       el.name,

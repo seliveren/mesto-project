@@ -1,12 +1,12 @@
 //проверка валидности всех полей
-function checkIfInvalid(inputs) {
+export function checkIfInvalid(inputs) {
   return inputs.some((input) => {
     return !input.validity.valid;
   });
 }
 
 //изменение состояния кнопки
-function changeButtonStyle(inputs, button, settings) {
+export function changeButtonStyle(inputs, button, settings) {
   if (checkIfInvalid(inputs)) {
     button.classList.add(settings.inactiveButtonClass);
     button.disabled = true;
