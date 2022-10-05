@@ -10,10 +10,20 @@ import {
   avatarOverlay,
   formAvatarEdit,
   avatar,
-  popupList, nameMain, userInfoMain, nameInput, jobInput, avatarInput, placeName, placeLink, popupItems, popupErrors, buttonSave
+  popupList,
+  nameMain,
+  userInfoMain,
+  nameInput,
+  jobInput,
+  avatarInput,
+  placeName,
+  placeLink,
+  popupItems,
+  popupErrors,
+  buttonSave,
 } from "./constants.js";
 import { insertCard, addPlace } from "./card.js";
-import {removeError, renderLoading, changeStyle} from "./utils.js";
+import { removeError, renderLoading, changeStyle } from "./utils.js";
 import { enableValidation } from "./validate.js";
 import "../pages/index.css";
 import {
@@ -24,12 +34,8 @@ import {
   getUserInfo,
   putLike,
   updateAvatar,
-  updateUserInfo
+  updateUserInfo,
 } from "./api.js";
-
-
-
-
 
 //открытие поп-ап с редактированием профиля
 buttonEdit.addEventListener("click", function () {
@@ -45,8 +51,8 @@ formProfileEdit.addEventListener("submit", submitProfile);
 //открытие поп-ап для добавления новой карточки
 buttonAdd.addEventListener("click", function () {
   openPopup(popupAdd);
-  placeLink.value = '';
-  placeName.value = '';
+  placeLink.value = "";
+  placeName.value = "";
   removeError();
   changeStyle(placeName, placeLink);
 });
@@ -57,7 +63,7 @@ formAddCard.addEventListener("submit", submitAddPlace);
 //открытие поп-ап для изменения аватарки
 avatarOverlay.addEventListener("click", function () {
   openPopup(popupAvatar);
-  avatarInput.value = '';
+  avatarInput.value = "";
   removeError();
   changeStyle(avatarInput);
 });
@@ -86,18 +92,12 @@ popupList.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
     if (evt.target.classList.contains("popup_opened")) {
       closePopup(popup);
-    } if (evt.target.classList.contains("button_category_close")) {
+    }
+    if (evt.target.classList.contains("button_category_close")) {
       closePopup(popup);
     }
   });
 });
-
-
-
-
-
-
-
 
 //обновление профиля
 function updateProfile(newInfo) {
@@ -106,7 +106,7 @@ function updateProfile(newInfo) {
       nameMain.textContent = profile.name;
       userInfoMain.textContent = profile.about;
     })
-    .then(res => closePopup(popupEdit))
+    .then((res) => closePopup(popupEdit))
     .catch((err) => {
       console.log(err);
     })
@@ -148,9 +148,9 @@ function renewAvatar(newAvatar) {
     .then((ava) => {
       avatar.src = ava.avatar;
     })
-    .then(res => formAvatarEdit.reset())
-    .then(res => {
-      closePopup(popupAvatar)
+    .then((res) => formAvatarEdit.reset())
+    .then((res) => {
+      closePopup(popupAvatar);
     })
     .catch((err) => {
       console.log(err);
@@ -206,25 +206,19 @@ getUserInfo()
       })
       .catch((err) => {
         console.log(err);
-      })
+      });
   })
   .catch((err) => {
     console.log(err);
-  })
+  });
 
 //id текущего пользователя
 export let currentUserId;
 getUserInfo()
-  .then(data => currentUserId = data._id)
-  .then(() => {return currentUserId})
-
-
-
-
-
-
-
-
+  .then((data) => (currentUserId = data._id))
+  .then(() => {
+    return currentUserId;
+  });
 
 //создание новой карточки на сервере
 export function makeCard(newCard) {
@@ -232,9 +226,9 @@ export function makeCard(newCard) {
     .then((card) => {
       insertCard(addPlace(card.name, card.link));
     })
-    .then(res =>  formAddCard.reset())
-    .then(res => {
-      closePopup(popupAdd)
+    .then((res) => formAddCard.reset())
+    .then((res) => {
+      closePopup(popupAdd);
     })
     .catch((err) => {
       console.log(err);
@@ -275,8 +269,6 @@ function renderInitialCards(res) {
   });
 }
 
-
-
 //функция удаления карточки
 export function removeCard(id) {
   deleteCard(id).catch((err) => {
@@ -297,7 +289,3 @@ export function deleteLikes(id) {
     console.log(err);
   });
 }
-
-
-
-

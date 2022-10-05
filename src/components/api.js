@@ -19,16 +19,14 @@ const checkStatus = (res) => {
 export const getUserInfo = () => {
   return fetch(`${config.baseUrl}/users/me`, {
     headers: config.headers,
-  }).then(res =>
-    checkStatus(res));
+  }).then((res) => checkStatus(res));
 };
 
 //GET method
 export const getInitialCards = () => {
   return fetch(`${config.baseUrl}/cards`, {
     headers: config.headers,
-  }).then(res =>
-    checkStatus(res));
+  }).then((res) => checkStatus(res));
 };
 
 //PATCH method
@@ -40,8 +38,7 @@ export const updateUserInfo = (newInfo) => {
       name: newInfo.name,
       about: newInfo.about,
     }),
-  }).then(res =>
-    checkStatus(res));
+  }).then((res) => checkStatus(res));
 };
 
 //POST method
@@ -53,8 +50,7 @@ export const createCard = (newCard) => {
       name: newCard.name,
       link: newCard.link,
     }),
-  }).then(res =>
-    checkStatus(res));
+  }).then((res) => checkStatus(res));
 };
 
 //PATCH method
@@ -65,8 +61,7 @@ export const updateAvatar = (newAvatar) => {
     body: JSON.stringify({
       avatar: newAvatar.avatar,
     }),
-  }).then(res =>
-    checkStatus(res));
+  }).then((res) => checkStatus(res));
 };
 
 //PUT method
@@ -74,8 +69,7 @@ export const putLike = (id) => {
   return fetch(`${config.baseUrl}/cards/likes/${id}`, {
     method: "PUT",
     headers: config.headers,
-  }).then(res =>
-    checkStatus(res));
+  }).then((res) => checkStatus(res));
 };
 
 //DELETE method
@@ -83,8 +77,7 @@ export const deleteLike = (id) => {
   return fetch(`${config.baseUrl}/cards/likes/${id}`, {
     method: "DELETE",
     headers: config.headers,
-  }).then(res =>
-    checkStatus(res));
+  }).then((res) => checkStatus(res));
 };
 
 //DELETE method
@@ -92,7 +85,5 @@ export const deleteCard = (id) => {
   return fetch(`${config.baseUrl}/cards/${id}`, {
     method: "DELETE",
     headers: config.headers,
-  }).then(res =>
-    checkStatus(res));
+  }).then((res) => checkStatus(res));
 };
-

@@ -3,10 +3,10 @@ import {
   popupPhotoImg,
   captionText,
   cardTemplate,
-  places
+  places,
 } from "./constants.js";
 import { openPopup } from "./modal.js";
-import { addLikes, deleteLikes, removeCard, currentUserId } from "./index.js"
+import { addLikes, deleteLikes, removeCard, currentUserId } from "./index.js";
 
 //функция для постановки лайков
 function toggleLike(evt) {
@@ -29,7 +29,7 @@ export function addPlace(
   id,
   ownerId,
   placeLikes,
-  placeLikesLength,
+  placeLikesLength
 ) {
   const cardElement = cardTemplate
     .querySelector(".places__place")
@@ -55,9 +55,7 @@ export function addPlace(
 
   //добавление корзины только у моей карточки
   if (ownerId !== currentUserId) {
-    cardElement
-      .querySelector(".button_category_delete")
-      .remove();
+    cardElement.querySelector(".button_category_delete").remove();
   }
 
   //добавление возможности удаления у моей карточки
@@ -65,10 +63,10 @@ export function addPlace(
     cardElement
       .querySelector(".button_category_delete")
       .addEventListener("click", function (e) {
-      let id = e.target.closest(".places__place").dataset.id;
-      removeCard(id);
-      e.target.closest(".places__place").remove();
-    });
+        let id = e.target.closest(".places__place").dataset.id;
+        removeCard(id);
+        e.target.closest(".places__place").remove();
+      });
   }
 
   //ставить лайки на карточке
@@ -95,7 +93,8 @@ export function addPlace(
           .classList.remove("button_category_like-active");
 
         cardElement.querySelector(".like-counter").textContent =
-          placeLikesLength; }
+          placeLikesLength;
+      }
     });
 
   //открытие фотографии новой карточки
@@ -110,5 +109,3 @@ export function addPlace(
 export function insertCard(element) {
   places.append(element);
 }
-
-

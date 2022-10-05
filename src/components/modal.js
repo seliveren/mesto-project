@@ -15,7 +15,7 @@ export function closePopup(popupElement) {
 //закрытие поп-апов кнопкой esc
 function closePopupWithEsc(evt) {
   if (evt.key === "Escape") {
-    popupList.forEach( (popup) => {
+    popupList.forEach((popup) => {
       if (popup.classList.contains("popup_opened")) {
         closePopup(popup);
       }
