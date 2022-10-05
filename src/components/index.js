@@ -10,18 +10,23 @@ import {
   avatarOverlay,
   formAvatarEdit,
   avatar,
-  popupList,
+  popupList, nameMain, userInfoMain, nameInput, jobInput, avatarInput, placeName, placeLink
 } from "./constants.js";
-import {
-  displayProfileInfo,
-  submitAvatar,
-  submitProfile,
-  showIcon,
-  hideIcon,
-} from "./profile.js";
-import { submitAddPlace } from "./card.js";
+import { insertCard, addPlace } from "./card.js";
+import { renderLoading } from "./utils.js";
 import { enableValidation } from "./validate.js";
 import "../pages/index.css";
+import {
+  createCard,
+  deleteCard,
+  deleteLike,
+  getInitialCards,
+  getUserInfo,
+  putLike,
+  updateAvatar,
+  updateUserInfo
+} from "./api.js";
+
 
 //открытие поп-ап с редактированием профиля
 buttonEdit.addEventListener("click", function () {
@@ -54,6 +59,7 @@ avatar.addEventListener("mouseover", showIcon);
 //исчезновение иконки при снятии ховера мышью у аватарки
 avatarOverlay.addEventListener("mouseout", hideIcon);
 
+//валидация
 enableValidation({
   formSelector: ".popup__form",
   inputSelector: ".popup__item",
@@ -74,3 +80,213 @@ popupList.forEach((popup) => {
     }
   });
 });
+
+
+
+
+
+
+
+
+//обновление профиля
+function updateProfile(newInfo) {
+  updateUserInfo(newInfo)
+    .then((profile) => {
+      nameMain.textContent = profile.name;
+      userInfoMain.textContent = profile.about;
+    })
+    .then(res => closePopup(popupEdit))
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally((res) => {
+      renderLoading(false);
+    });
+}
+
+//функция сохранения информации в профиле
+function submitProfile(evt) {
+  evt.preventDefault();
+
+  renderLoading(true);
+
+  const profileName = nameInput;
+  const profileAbout = jobInput;
+
+  updateProfile({
+    name: profileName.value,
+    about: profileAbout.value,
+  });
+}
+
+//отображение значений профиля в форме редактирования
+function displayProfileInfo() {
+  getUserInfo()
+    .then((res) => {
+      nameInput.value = res.name;
+      jobInput.value = res.about;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+//обновление аватарки
+function renewAvatar(newAvatar) {
+  updateAvatar(newAvatar)
+    .then((ava) => {
+      avatar.src = ava.avatar;
+    })
+    .then(res => formAvatarEdit.reset())
+    .then(res => {
+      closePopup(popupAvatar)
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally((res) => {
+      renderLoading(false);
+    });
+}
+
+//функция сохранения аватарки
+function submitAvatar(evt) {
+  evt.preventDefault();
+
+  renderLoading(true);
+
+  const avatarLink = avatarInput;
+
+  renewAvatar({
+    avatar: avatarLink.value,
+  });
+}
+
+//появление иконки у аватарки
+function showIcon() {
+  avatarOverlay.classList.add("profile__avatar-overlay_displayed");
+}
+
+//исчезновение иконки у аватарки
+function hideIcon() {
+  avatarOverlay.classList.remove("profile__avatar-overlay_displayed");
+}
+
+//установка значений пользователя
+function setUserInfo(res) {
+  nameMain.textContent = res.name;
+  userInfoMain.textContent = res.about;
+}
+
+//установка аватарки
+function setUserAvatar(res) {
+  avatar.src = res.avatar;
+}
+
+//отображение инфо о пользователе на страничке
+getUserInfo()
+  .then((res) => {
+    setUserInfo(res);
+    setUserAvatar(res);
+    //изначальные карточки на странице (вложенность)
+    getInitialCards()
+      .then((res) => {
+        renderInitialCards(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+
+//Id текущего пользователя
+export let currentUserId;
+getUserInfo()
+  .then(data => currentUserId = data._id)
+  .then(() => {return currentUserId})
+
+
+
+
+
+
+
+
+
+//создание новой карточки на сервере
+export function makeCard(newCard) {
+  createCard(newCard)
+    .then((card) => {
+      insertCard(addPlace(card.name, card.link));
+    })
+    .then(res =>  formAddCard.reset())
+    .then(res => {
+      closePopup(popupAdd)
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally((res) => {
+      renderLoading(false);
+    });
+}
+
+//функция сохранения добавления новой карточки
+function submitAddPlace(evt) {
+  evt.preventDefault();
+
+  renderLoading(true);
+
+  const photoName = placeName;
+  const photoLink = placeLink;
+
+  makeCard({
+    name: photoName.value,
+    link: photoLink.value,
+  });
+}
+
+//функция рендеринга карточек на странице
+function renderInitialCards(res, a) {
+  res.forEach((el) => {
+    const card = addPlace(
+      el.name,
+      el.link,
+      el.alt,
+      el._id,
+      el.owner._id,
+      el.likes,
+      el.likes.length
+    );
+    insertCard(card);
+  });
+}
+
+
+
+//функция удаления карточки
+export function removeCard(id) {
+  deleteCard(id).catch((err) => {
+    console.log(err);
+  });
+}
+
+//функция постановки лайка
+export function addLikes(id) {
+  putLike(id).catch((err) => {
+    console.log(err);
+  });
+}
+
+//функция удаления лайка
+export function deleteLikes(id) {
+  deleteLike(id).catch((err) => {
+    console.log(err);
+  });
+}
+
+
+
+

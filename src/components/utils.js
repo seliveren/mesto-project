@@ -1,7 +1,11 @@
-export function renderLoading(isLoading, form) {
-  if (isLoading) {
-    form.querySelector(".button_category_save").textContent = "Сохранение...";
-  } else {
-    form.querySelector(".button_category_save").textContent = "Сохранить";
-  }
+import { saveButtons } from "./constants.js";
+
+export function renderLoading(isLoading) {
+  saveButtons.forEach((button) => {
+    if (isLoading) {
+      button.textContent = "Сохранение...";
+    } else {
+      button.textContent = "Сохранить";
+    }
+  })
 }

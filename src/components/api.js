@@ -1,3 +1,4 @@
+//базовая конфигурация
 export const config = {
   baseUrl: "https://mesto.nomoreparties.co/v1/plus-cohort-15",
   headers: {
@@ -6,32 +7,32 @@ export const config = {
   },
 };
 
+//проверка статуса
+const checkStatus = (res) => {
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Ошибка: ${res.status}`);
+};
+
+//GET method
+export const getUserInfo = () => {
+  return fetch(`${config.baseUrl}/users/me`, {
+    headers: config.headers,
+  }).then(res =>
+    checkStatus(res));
+};
+
 //GET method
 export const getInitialCards = () => {
   return fetch(`${config.baseUrl}/cards`, {
     headers: config.headers,
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
-};
-
-//GET method
-export const profileData = () => {
-  return fetch(`${config.baseUrl}/users/me`, {
-    headers: config.headers,
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+  }).then(res =>
+    checkStatus(res));
 };
 
 //PATCH method
-export const changedProfile = (newInfo) => {
+export const updateUserInfo = (newInfo) => {
   return fetch(`${config.baseUrl}/users/me`, {
     method: "PATCH",
     headers: config.headers,
@@ -39,16 +40,12 @@ export const changedProfile = (newInfo) => {
       name: newInfo.name,
       about: newInfo.about,
     }),
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+  }).then(res =>
+    checkStatus(res));
 };
 
 //POST method
-export const postedCard = (newCard) => {
+export const createCard = (newCard) => {
   return fetch(`${config.baseUrl}/cards`, {
     method: "POST",
     headers: config.headers,
@@ -56,28 +53,20 @@ export const postedCard = (newCard) => {
       name: newCard.name,
       link: newCard.link,
     }),
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+  }).then(res =>
+    checkStatus(res));
 };
 
 //PATCH method
-export const changedAvatar = (newAvatar) => {
+export const updateAvatar = (newAvatar) => {
   return fetch(`${config.baseUrl}/users/me/avatar`, {
     method: "PATCH",
     headers: config.headers,
     body: JSON.stringify({
       avatar: newAvatar.avatar,
     }),
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+  }).then(res =>
+    checkStatus(res));
 };
 
 //PUT method
@@ -85,36 +74,25 @@ export const putLike = (id) => {
   return fetch(`${config.baseUrl}/cards/likes/${id}`, {
     method: "PUT",
     headers: config.headers,
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+  }).then(res =>
+    checkStatus(res));
 };
 
 //DELETE method
-export const deletedLike = (id) => {
+export const deleteLike = (id) => {
   return fetch(`${config.baseUrl}/cards/likes/${id}`, {
     method: "DELETE",
     headers: config.headers,
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+  }).then(res =>
+    checkStatus(res));
 };
 
 //DELETE method
-export const deletedCard = (id) => {
+export const deleteCard = (id) => {
   return fetch(`${config.baseUrl}/cards/${id}`, {
     method: "DELETE",
     headers: config.headers,
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+  }).then(res =>
+    checkStatus(res));
 };
+

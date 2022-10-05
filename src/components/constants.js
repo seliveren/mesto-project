@@ -8,6 +8,7 @@ export const popupAvatar = document.querySelector(".popup_type_for-avatar");
 //кнопки
 export const buttonEdit = document.querySelector(".button_category_edit");
 export const buttonAdd = document.querySelector(".button_category_add");
+export const saveButtons = document.querySelectorAll(".button_category_save");
 
 //форма редактирования профиля
 export const formProfileEdit = popupEdit.querySelector(".popup__form");
