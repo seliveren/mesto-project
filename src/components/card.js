@@ -91,7 +91,6 @@ export function addPlace(
         cardElement
           .querySelector(".button_category_like")
           .classList.remove("button_category_like-active");
-
         cardElement.querySelector(".like-counter").textContent =
           placeLikesLength;
       }
