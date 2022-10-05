@@ -10,7 +10,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
-    publicPath: '',
+    publicPath: 'https://seliveren.github.io/mesto-project/',
   },
   mode: 'development',
   devServer: {
