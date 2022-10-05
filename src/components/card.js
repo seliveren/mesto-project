@@ -6,7 +6,7 @@ import {
   places
 } from "./constants.js";
 import { openPopup } from "./modal.js";
-import {addLikes, deleteLikes, removeCard, currentUserId} from "./index.js"
+import { addLikes, deleteLikes, removeCard, currentUserId } from "./index.js"
 
 //функция для постановки лайков
 function toggleLike(evt) {
@@ -93,9 +93,9 @@ export function addPlace(
         cardElement
           .querySelector(".button_category_like")
           .classList.remove("button_category_like-active");
+
         cardElement.querySelector(".like-counter").textContent =
-          placeLikesLength;
-      }
+          placeLikesLength; }
     });
 
   //открытие фотографии новой карточки
