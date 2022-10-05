@@ -22,7 +22,6 @@ import {
 import { submitAddPlace } from "./card.js";
 import { enableValidation } from "./validate.js";
 import "../pages/index.css";
-import "../index.html";
 
 //открытие поп-ап с редактированием профиля
 buttonEdit.addEventListener("click", function () {
