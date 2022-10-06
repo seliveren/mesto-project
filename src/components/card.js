@@ -6,12 +6,6 @@ import {
   places,
 } from "./constants.js";
 import { openPopup } from "./modal.js";
-import { addLikes, deleteLikes, removeCard, currentUserId } from "./index.js";
-
-//функция для постановки лайков
-function toggleLike(evt) {
-  evt.target.classList.toggle("button_category_like-active");
-}
 
 //функция для открытия карточки
 function openCard(placeLinkValue, placeNameValue, placeAltValue) {
@@ -29,7 +23,11 @@ export function addPlace(
   id,
   ownerId,
   placeLikes,
-  placeLikesLength
+  placeLikesLength,
+  removeCard,
+  addLikes,
+  deleteLikes,
+  currentUserId
 ) {
   const cardElement = cardTemplate
     .querySelector(".places__place")
@@ -63,7 +61,7 @@ export function addPlace(
     cardElement
       .querySelector(".button_category_delete")
       .addEventListener("click", function (e) {
-        let id = e.target.closest(".places__place").dataset.id;
+        const id = e.target.closest(".places__place").dataset.id;
         removeCard(id);
         e.target.closest(".places__place").remove();
       });
@@ -104,7 +102,12 @@ export function addPlace(
   return cardElement;
 }
 
-//функция вставки карточки
-export function insertCard(element) {
+//функция вставки карточки в начало
+export function prependCard(element) {
+  places.prepend(element);
+}
+
+//функция вставки карточки в конец
+export function appendCard(element) {
   places.append(element);
 }

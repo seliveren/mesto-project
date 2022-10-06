@@ -1,3 +1,5 @@
+import {popupErrors, popupItems} from "./constants";
+
 //проверка валидности всех полей
 export function checkIfInvalid(inputs) {
   return inputs.some((input) => {
@@ -14,6 +16,16 @@ export function changeButtonStyle(inputs, button, settings) {
     button.classList.remove(settings.inactiveButtonClass);
     button.disabled = false;
   }
+}
+
+//скрыть ошибки после reset формы
+export function removeError(settings) {
+  popupItems.forEach((item) => {
+    item.classList.remove(settings.inputErrorClass);
+  });
+  popupErrors.forEach((error) => {
+    error.classList.remove(settings.errorClass);
+  });
 }
 
 //показывает ошибку невалидного поля
@@ -60,6 +72,7 @@ function addEventListeners(form, settings) {
   form.addEventListener("reset", () => {
     setTimeout(() => {
       changeButtonStyle(inputs, button, settings);
+      removeError(settings);
     }, 0);
   });
 
@@ -71,6 +84,7 @@ function addEventListeners(form, settings) {
     });
   });
 }
+
 
 //запуск валидации (полей) и изменения состояния (кнопки) элементов формы
 export function enableValidation(settings) {
@@ -84,3 +98,4 @@ export function enableValidation(settings) {
     });
   });
 }
+

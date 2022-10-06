@@ -17,14 +17,11 @@ import {
   jobInput,
   avatarInput,
   placeName,
-  placeLink,
-  popupItems,
-  popupErrors,
-  buttonSave,
+  placeLink
 } from "./constants.js";
-import { insertCard, addPlace } from "./card.js";
-import { removeError, renderLoading, changeStyle } from "./utils.js";
-import { enableValidation } from "./validate.js";
+import { appendCard, prependCard, addPlace } from "./card.js";
+import { renderLoading } from "./utils.js";
+import { enableValidation, removeError } from "./validate.js";
 import "../pages/index.css";
 import {
   createCard,
@@ -41,8 +38,6 @@ import {
 buttonEdit.addEventListener("click", function () {
   openPopup(popupEdit);
   displayProfileInfo();
-  removeError();
-  changeStyle(nameInput, jobInput);
 });
 
 //сохранение информации в профиле
@@ -50,11 +45,8 @@ formProfileEdit.addEventListener("submit", submitProfile);
 
 //открытие поп-ап для добавления новой карточки
 buttonAdd.addEventListener("click", function () {
+  formAddCard.reset();
   openPopup(popupAdd);
-  placeLink.value = "";
-  placeName.value = "";
-  removeError();
-  changeStyle(placeName, placeLink);
 });
 
 //сохранение новой карточки
@@ -62,11 +54,10 @@ formAddCard.addEventListener("submit", submitAddPlace);
 
 //открытие поп-ап для изменения аватарки
 avatarOverlay.addEventListener("click", function () {
-  openPopup(popupAvatar);
-  avatarInput.value = "";
-  removeError();
-  changeStyle(avatarInput);
-});
+    openPopup(popupAvatar);
+    formAvatarEdit.reset();
+  }
+ );
 
 //сохранение аватарки
 formAvatarEdit.addEventListener("submit", submitAvatar);
@@ -90,10 +81,7 @@ enableValidation({
 //закрытие поп-апов нажатием на крестик и оверлей
 popupList.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
-    if (evt.target.classList.contains("popup_opened")) {
-      closePopup(popup);
-    }
-    if (evt.target.classList.contains("button_category_close")) {
+    if (evt.target.classList.contains("popup_opened") || evt.target.classList.contains("button_category_close")) {
       closePopup(popup);
     }
   });
@@ -132,21 +120,15 @@ function submitProfile(evt) {
 
 //отображение значений профиля в форме редактирования
 function displayProfileInfo() {
-  getUserInfo()
-    .then((res) => {
-      nameInput.value = res.name;
-      jobInput.value = res.about;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  nameInput.value = nameMain.textContent;
+  jobInput.value = userInfoMain.textContent;
 }
 
 //обновление аватарки
 function renewAvatar(newAvatar) {
   updateAvatar(newAvatar)
     .then((ava) => {
-      avatar.src = ava.avatar;
+      setUserAvatar(ava);
     })
     .then((res) => formAvatarEdit.reset())
     .then((res) => {
@@ -194,11 +176,13 @@ function setUserAvatar(res) {
   avatar.src = res.avatar;
 }
 
-//отображение инфо о пользователе на страничке
+//отображение инфо о пользователе на страничке и получение id текущего пользователя
+let currentUserId;
 getUserInfo()
   .then((res) => {
     setUserInfo(res);
     setUserAvatar(res);
+    currentUserId = res._id;
     //изначальные карточки на странице (вложенность)
     getInitialCards()
       .then((res) => {
@@ -212,19 +196,24 @@ getUserInfo()
     console.log(err);
   });
 
-//id текущего пользователя
-export let currentUserId;
-getUserInfo()
-  .then((data) => (currentUserId = data._id))
-  .then(() => {
-    return currentUserId;
-  });
-
 //создание новой карточки на сервере
 export function makeCard(newCard) {
   createCard(newCard)
     .then((card) => {
-      insertCard(addPlace(card.name, card.link));
+      const newCard = addPlace(
+        card.name,
+        card.link,
+        card.alt,
+        card._id,
+        card.owner._id,
+        card.likes,
+        card.likes.length,
+        removeCard,
+        addLikes,
+        deleteLikes,
+        currentUserId
+      );
+      prependCard(newCard);
     })
     .then((res) => formAddCard.reset())
     .then((res) => {
@@ -263,28 +252,32 @@ function renderInitialCards(res) {
       el._id,
       el.owner._id,
       el.likes,
-      el.likes.length
+      el.likes.length,
+      removeCard,
+      addLikes,
+      deleteLikes,
+      currentUserId
     );
-    insertCard(card);
+    appendCard(card);
   });
 }
 
 //функция удаления карточки
-export function removeCard(id) {
+function removeCard(id) {
   deleteCard(id).catch((err) => {
     console.log(err);
   });
 }
 
 //функция постановки лайка
-export function addLikes(id) {
+function addLikes(id) {
   putLike(id).catch((err) => {
     console.log(err);
   });
 }
 
 //функция удаления лайка
-export function deleteLikes(id) {
+function deleteLikes(id) {
   deleteLike(id).catch((err) => {
     console.log(err);
   });
