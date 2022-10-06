@@ -36,6 +36,7 @@ import {
 
 //открытие поп-ап с редактированием профиля
 buttonEdit.addEventListener("click", function () {
+  formProfileEdit.reset();
   openPopup(popupEdit);
   displayProfileInfo();
 });
