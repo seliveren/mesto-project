@@ -9,5 +9,3 @@ export function renderLoading(isLoading) {
     }
   });
 }
-
-

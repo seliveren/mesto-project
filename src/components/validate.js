@@ -1,4 +1,4 @@
-import {popupErrors, popupItems} from "./constants";
+import { popupErrors, popupItems } from "./constants";
 
 //проверка валидности всех полей
 export function checkIfInvalid(inputs) {
@@ -85,7 +85,6 @@ function addEventListeners(form, settings) {
   });
 }
 
-
 //запуск валидации (полей) и изменения состояния (кнопки) элементов формы
 export function enableValidation(settings) {
   const forms = Array.from(document.querySelectorAll(settings.formSelector));
@@ -98,4 +97,3 @@ export function enableValidation(settings) {
     });
   });
 }
-

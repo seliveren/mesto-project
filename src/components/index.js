@@ -17,11 +17,11 @@ import {
   jobInput,
   avatarInput,
   placeName,
-  placeLink
+  placeLink,
 } from "./constants.js";
 import { appendCard, prependCard, addPlace } from "./card.js";
 import { renderLoading } from "./utils.js";
-import { enableValidation, removeError } from "./validate.js";
+import { enableValidation } from "./validate.js";
 import "../pages/index.css";
 import {
   createCard,
@@ -54,10 +54,9 @@ formAddCard.addEventListener("submit", submitAddPlace);
 
 //открытие поп-ап для изменения аватарки
 avatarOverlay.addEventListener("click", function () {
-    openPopup(popupAvatar);
-    formAvatarEdit.reset();
-  }
- );
+  openPopup(popupAvatar);
+  formAvatarEdit.reset();
+});
 
 //сохранение аватарки
 formAvatarEdit.addEventListener("submit", submitAvatar);
@@ -81,7 +80,10 @@ enableValidation({
 //закрытие поп-апов нажатием на крестик и оверлей
 popupList.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
-    if (evt.target.classList.contains("popup_opened") || evt.target.classList.contains("button_category_close")) {
+    if (
+      evt.target.classList.contains("popup_opened") ||
+      evt.target.classList.contains("button_category_close")
+    ) {
       closePopup(popup);
     }
   });
